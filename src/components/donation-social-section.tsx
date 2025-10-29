@@ -129,7 +129,7 @@ export default function DonationSocialSection() {
               {/* 💙 Facebook Updates */}
               <div
                 ref={facebookCard.ref}
-                className={`w-full max-w-[900px] mx-auto rounded-2xl p-6 bg-linear-to-br 
+                className={`w-full max-w-[1200px] mx-auto rounded-2xl p-6 bg-linear-to-br 
                 from-slate-800/60 via-slate-900/60 to-slate-800/60 backdrop-blur-lg 
                 shadow-[0_0_20px_rgba(0,150,255,0.15)] border border-blue-500/30 
                 transition-all duration-700 hover:shadow-[0_0_30px_rgba(100,200,255,0.3)] delay-200 

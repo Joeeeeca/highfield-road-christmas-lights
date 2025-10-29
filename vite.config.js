@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/highfield-lights-v2/', // ✅ MUST end with a trailing slash
+  base: './', // ✅ MUST end with a trailing slash
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
