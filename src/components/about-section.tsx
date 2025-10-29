@@ -6,28 +6,28 @@ import { Helmet } from "react-helmet-async"
 export default function AboutSection() {
    <Helmet>
   {/* 🏷️ Core SEO */}
-  <title>About | Thomas’ Christmas Lights Display 🎄</title>
+  <title>About | Highfield Road Christmas Lights 🎄</title>
   <meta
     name="description"
-    content="Learn how Thomas’ Christmas Lights Display began — a family tradition bringing festive joy and raising money for Isle of Wight charities."
+    content="Learn how Highfield Road Christmas Lights began — a family tradition bringing festive joy and raising money for Isle of Wight charities."
   />
 
   {/* 📣 Open Graph (for Facebook, LinkedIn, etc.) */}
-  <meta property="og:title" content="About | Thomas’ Christmas Lights Display 🎄" />
+  <meta property="og:title" content="About | Highfield Road Christmas Lights Display 🎄" />
   <meta
     property="og:description"
-    content="Discover the story behind Thomas’ Christmas Lights Display — a heartwarming family project supporting Isle of Wight charities."
+    content="Discover the story behind Highfield Road Christmas Lights Display — a heartwarming family project supporting Isle of Wight charities."
   />
   <meta property="og:image" content="/images/about-image.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com/#about" />
+<meta property="og:url" content="https://highfieldroadchristmaslights.com/" />
 
   {/* 🐦 Twitter Card */}
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About | Thomas’ Christmas Lights Display 🎄" />
+  <meta name="twitter:title" content="About | Highfield Road Christmas Lights Display 🎄" />
   <meta
     name="twitter:description"
-    content="Meet the family behind Thomas’ Christmas Lights Display and the causes we support on the Isle of Wight."
+    content="Meet the family behind Highfield Road Christmas Lights Display and the causes we support on the Isle of Wight."
   />
   <meta name="twitter:image" content="/images/about-image.jpg" />
 
@@ -36,12 +36,12 @@ export default function AboutSection() {
     {JSON.stringify({
       "@context": "https://schema.org",
       "@type": "CharitableOrganization",
-      name: "Thomas’ Christmas Lights Display",
-      url: "https://yourdomain.com/",
-      logo: "/images/og-image.webp",
+      name: "Highfield Road Christmas Lights",
+      url: "https://highfieldroadchristmaslights.com/",
+      logo: "https://highfieldroadchristmaslights.com/images/website-logo.jpg",
       sameAs: [
-        "https://www.facebook.com/yourpage",
-        "https://www.justgiving.com/your-campaign"
+        "https://www.facebook.com/HighfieldRoadChristmasLights",
+        "https://www.gofundme.com/f/vectis-corps-of-drums-marching-band?lang=en_GB"
       ],
       description:
         "A family-run Christmas light display on the Isle of Wight raising money for local charities.",
@@ -54,7 +54,7 @@ export default function AboutSection() {
         "@type": "Event",
         name: "Thomas’ Christmas Lights Display",
         startDate: "2025-12-01",
-        endDate: "2026-01-01",
+        endDate: "2025-12-31",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         eventStatus: "https://schema.org/EventScheduled",
         location: {
@@ -72,7 +72,7 @@ export default function AboutSection() {
   const card3 = useFadeInOnScroll()
 
   return (
-    <section className="relative py-16 px-4 sm:px-6 lg:pt-8 pb-6 christmas-lights text-glow">
+    <section id="about-section" className="relative py-16 px-4 sm:px-6 lg:pt-8 pb-6 christmas-lights text-glow">
       {/* ✨ Fairy Lights Divider (top of section) */}
       <div className="absolute -top-8 left-0 w-full z-20">
         <FairyLights />
@@ -89,9 +89,9 @@ export default function AboutSection() {
   }`}
 >
   <div className="flex items-center justify-center gap-3 mt-8 mb-4">
-    <Sparkles className="w-8 h-8 text-christmas-gold animate-pulse" />
+ <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-christmas-gold animate-pulse" />
     <h2 className="text-4xl font-bold text-white">About Our Display</h2>
-    <Sparkles className="w-8 h-8 text-christmas-gold animate-pulse" />
+ <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-christmas-gold animate-pulse" />
   </div>
 
   {/* ✨ Animated underline */}
