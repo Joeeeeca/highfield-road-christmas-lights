@@ -36,7 +36,7 @@ export default function DonationSocialSection() {
   return (
     <>
       <Helmet>
-        <title>Donate & Stay Connected | Highfield Road Christmas Lights 🎄</title>
+        <title>Highfield Road Christmas Lights 🎄</title>
         <meta
           name="description"
           content="Support Highfield Road Christmas Lights by donating to our GoFundMe campaign and following our updates on Facebook."
