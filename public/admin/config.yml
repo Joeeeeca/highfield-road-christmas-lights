@@ -1,12 +1,11 @@
 backend:
   name: github
   repo: Joeeeeca/highfield-road-christmas-lights
-  branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  branch: gh-pages
+  base_url: https://decap-cms-oauth.vercel.app
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "dist/images/uploads"  # where images are stored in your built site
+public_folder: "/images/uploads"     # how those images are referenced in the site
 
 collections:
   - name: "content"

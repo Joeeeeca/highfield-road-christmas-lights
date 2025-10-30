@@ -1,6 +1,0 @@
-[build]
-  publish = "public"
-  command = "echo 'Skipping build step — static site only'"
-
-[build.environment]
-  NODE_VERSION = "18"
