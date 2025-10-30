@@ -1,5 +1,35 @@
 {
-  "heading": "Welcome to Highfield Road Christmas Lights!",
-  "text": "We’re a family-run Christmas light display on the Isle of Wight raising funds for local charities.",
-  "image": "/images/website-logo.jpg"
+  "title": "About Our Display",
+  "cards": [
+    {
+      "icon": "Star",
+      "heading": "Our Story",
+      "text": [
+        "Our Christmas light display combines a love of Christmas with a desire to make people smile.",
+        "It all began in 2020 when our son, Thomas, was just eight years old and decided to decorate our home with a handful of lights.",
+        "What started as a small display quickly grew into a family tradition that brings festive joy to our community every year."
+      ]
+    },
+    {
+      "icon": "Gift",
+      "heading": "Why We Do This",
+      "text": [
+        "In 2023, he invited visitors to make charity donations and raised £251.44 for Mountbatten Isle of Wight, a charity that has supported our family and many others in times of need.",
+        "In 2024, Thomas raised £200.31 for RSPCA Isle of Wight, to thank them for caring for our kittens rescued from Lynbottom Household Waste Recycling Centre in 2022."
+      ]
+    },
+    {
+      "icon": "Sparkles",
+      "heading": "The Display",
+      "text": [
+        "Each year, Thomas has built up the display to be bigger and better — not only to spread Christmas cheer but also to give back.",
+        "We look forward to welcoming visitors again this year and raising even more for charity — but above all, we just love making people smile!"
+      ]
+    }
+  ],
+  "meta": {
+    "title": "About | Highfield Road Christmas Lights 🎄",
+    "description": "Learn how Highfield Road Christmas Lights began — a family tradition bringing festive joy and raising money for Isle of Wight charities.",
+    "image": "/images/about-image.jpg"
+  }
 }

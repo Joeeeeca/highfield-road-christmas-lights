@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Highfield Road Christmas Lights 🎄",
+    "description": "Experience the magic of Highfield Road Christmas Lights Display — a family tradition spreading joy and raising funds for Isle of Wight charities.",
+    "image": "/images/website-logo.jpg"
+  },
+  "heading": "Come See Our Christmas Lights!",
+  "text": "A festive display created with love to spread holiday cheer. If you'd like, donations welcome for charity!",
+  "backgroundImage": "/images/main-image.jpeg",
+  "buttons": [
+    { "label": "Visit Us", "link": "#visit-section" },
+    { "label": "Learn More", "link": "#about-section" }
+  ]
+}

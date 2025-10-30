@@ -1,56 +1,46 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Heart, Facebook, Sparkles } from "lucide-react"
-import { useFadeInOnScroll } from "@/lib/useFadeInOnScroll"
-import { FairyLights } from "./fairy-lights"
-import { Helmet } from "react-helmet-async"
+import donationData from "@/content/donation.json";
+import { useState, useEffect } from "react";
+import { Heart, Facebook, Sparkles } from "lucide-react";
+import { useFadeInOnScroll } from "@/lib/useFadeInOnScroll";
+import { FairyLights } from "./fairy-lights";
+import { Helmet } from "react-helmet-async";
 
 export default function DonationSocialSection() {
-  const [donationError, setDonationError] = useState(false)
-  const [facebookLoaded, setFacebookLoaded] = useState(false)
-
-  const goFundMeUrl =
-    "https://www.gofundme.com/f/vectis-corps-of-drums-marching-band?lang=en_GB"
+  const [donationError, setDonationError] = useState(false);
+  const [facebookLoaded, setFacebookLoaded] = useState(false);
 
   useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://widgets.sociablekit.com/facebook-page-posts/widget.js"
-    script.defer = true
-    script.onload = () => setFacebookLoaded(true)
-    script.onerror = () => console.error("⚠️ Failed to load SociableKIT script")
-    document.body.appendChild(script)
+    const script = document.createElement("script");
+    script.src = "https://widgets.sociablekit.com/facebook-page-posts/widget.js";
+    script.defer = true;
+    script.onload = () => setFacebookLoaded(true);
+    script.onerror = () => console.error("⚠️ Failed to load SociableKIT script");
+    document.body.appendChild(script);
     return () => {
-      document.body.removeChild(script)
-    }
-  }, [])
+      document.body.removeChild(script);
+    };
+  }, []);
 
-  const title = useFadeInOnScroll()
-  const donationCard = useFadeInOnScroll()
-  const facebookCard = useFadeInOnScroll()
-
-  // 🖼️ fallback images
-  const fallbackDonationImage = "./images/donation-amount.jpg"
-  const fallbackFacebookImage = "./images/facebook-preview.png"
+  const title = useFadeInOnScroll();
+  const donationCard = useFadeInOnScroll();
+  const facebookCard = useFadeInOnScroll();
 
   return (
     <>
       <Helmet>
-        <title>Highfield Road Christmas Lights 🎄</title>
-        <meta
-          name="description"
-          content="Support Highfield Road Christmas Lights by donating to our GoFundMe campaign and following our updates on Facebook."
-        />
-        <meta property="og:title" content="Donate & Stay Connected | Highfield Road Christmas Lights 🎄" />
-<meta property="og:description" content="Support Highfield Road Christmas Lights by donating or following our updates on Facebook." />
-<meta property="og:image" content="/images/donation-amount.jpg" />
-<meta property="og:url" content="https://highfieldroadchristmaslights.com/" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Donate & Stay Connected | Highfield Road Christmas Lights 🎄" />
-<meta name="twitter:description" content="Donate and stay connected with our community Christmas lights display." />
-<meta name="twitter:image" content="/images/facebook-preview.png" />
-
+        <title>{donationData.meta.title}</title>
+        <meta name="description" content={donationData.meta.description} />
+        <meta property="og:title" content={donationData.meta.title} />
+        <meta property="og:description" content={donationData.meta.description} />
+        <meta property="og:image" content={donationData.meta.image} />
+        <meta property="og:url" content="https://highfieldroadchristmaslights.com/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={donationData.meta.title} />
+        <meta name="twitter:description" content={donationData.meta.description} />
+        <meta name="twitter:image" content={donationData.meta.image} />
       </Helmet>
 
       <section className="relative py-20 px-4 overflow-hidden">
@@ -68,18 +58,18 @@ export default function DonationSocialSection() {
             }`}
           >
             <div className="flex flex-wrap items-center justify-center gap-3 mb-4 text-center">
-              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-christmas-gold animate-pulse" />
-              <h2 className="text-3xl md:text-5xl font-bold text-white">Stay Connected</h2>
-              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-christmas-gold animate-pulse" />
+              <Sparkles className="w-6 h-6 text-christmas-gold animate-pulse" />
+              <h2 className="text-3xl md:text-5xl font-bold text-white">
+                {donationData.heading}
+              </h2>
+              <Sparkles className="w-6 h-6 text-christmas-gold animate-pulse" />
             </div>
-
             <div className="w-24 h-1 bg-linear-to-r from-christmas-red via-christmas-green to-christmas-gold mx-auto mb-12 rounded-full" />
           </div>
 
           {/* 💞 Two-column Layout */}
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 justify-items-center md:justify-items-stretch w-full max-w-[1300px]">
-              
               {/* ❤️ GoFundMe Donation Widget */}
               <div
                 ref={donationCard.ref}
@@ -93,36 +83,37 @@ export default function DonationSocialSection() {
                   <div className="p-2 rounded-full bg-linear-to-br from-red-500/40 to-red-800/40">
                     <Heart className="w-6 h-6 text-christmas-red" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Support Our Cause</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    {donationData.donation.title}
+                  </h3>
                 </div>
 
                 <p className="text-slate-300 mb-6 leading-relaxed">
-                  Every donation helps make a difference. Support our charity through our
-                  official GoFundMe campaign.
+                  {donationData.donation.text}
                 </p>
 
                 <div className="relative w-full h-[400px] bg-slate-900/50 rounded-xl overflow-hidden border border-red-500/30 flex items-center justify-center">
-                 {donationError ? (
-  <a
-    href={goFundMeUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block w-full h-full"
-  >
-    <img
-      src={fallbackDonationImage}
-      alt="GoFundMe Donation Fallback"
-      className="w-full h-full object-cover rounded-xl hover:opacity-90 transition"
-    />
-  </a>
-) : (
-  <iframe
-    src={goFundMeUrl}
-    className="w-full h-full"
-    title="GoFundMe Donation Widget"
-    onError={() => setDonationError(true)}
-  />
-)}
+                  {donationError ? (
+                    <a
+                      href={donationData.donation.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      <img
+                        src={donationData.donation.fallbackImage}
+                        alt="GoFundMe Donation Fallback"
+                        className="w-full h-full object-cover rounded-xl hover:opacity-90 transition"
+                      />
+                    </a>
+                  ) : (
+                    <iframe
+                      src={donationData.donation.url}
+                      className="w-full h-full"
+                      title="GoFundMe Donation Widget"
+                      onError={() => setDonationError(true)}
+                    />
+                  )}
                 </div>
               </div>
 
@@ -139,42 +130,43 @@ export default function DonationSocialSection() {
                   <div className="p-2 rounded-full bg-gradient-to-br from-blue-500/40 to-blue-800/40">
                     <Facebook className="w-6 h-6 text-blue-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Latest Updates</h3>
+                  <h3 className="text-2xl font-bold text-white">
+                    {donationData.facebook.title}
+                  </h3>
                 </div>
 
                 <p className="text-slate-300 mb-6 leading-relaxed">
-                  Follow our Facebook page for the latest news and photos from the display.
+                  {donationData.facebook.text}
                 </p>
 
                 <div className="relative w-full min-h-[400px] bg-slate-900/50 rounded-xl overflow-hidden border border-blue-500/30 flex items-center justify-center">
                   {!facebookLoaded ? (
-  <a
-    href="https://www.facebook.com/HighfieldRoadChristmasLights"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block w-full h-full"
-  >
-    <img
-      src={fallbackFacebookImage}
-      alt="Facebook Updates Fallback"
-      className="w-full h-full object-cover rounded-xl hover:opacity-90 transition"
-    />
-  </a>
-) : (
-  <div className="w-full max-h-[500px] overflow-y-auto rounded-md">
-    <div
-      className="sk-ww-facebook-page-posts w-full"
-      data-embed-id="25615336"
-    ></div>
-  </div>
-)}
+                    <a
+                      href={donationData.facebook.pageUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      <img
+                        src={donationData.facebook.fallbackImage}
+                        alt="Facebook Updates Fallback"
+                        className="w-full h-full object-cover rounded-xl hover:opacity-90 transition"
+                      />
+                    </a>
+                  ) : (
+                    <div className="w-full max-h-[500px] overflow-y-auto rounded-md">
+                      <div
+                        className="sk-ww-facebook-page-posts w-full"
+                        data-embed-id={donationData.facebook.embedId}
+                      ></div>
+                    </div>
+                  )}
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }

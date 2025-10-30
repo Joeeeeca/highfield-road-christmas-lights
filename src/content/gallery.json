@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Gallery | Highfield Road Christmas Lights 🎄",
+    "description": "Explore the Highfield Road Christmas Lights Gallery — a festive showcase of glowing decorations, colourful displays, and community spirit on the Isle of Wight.",
+    "image": "/images/about-image.jpg"
+  },
+  "heading": "Photo Gallery",
+  "subtext": "Take a peek at our festive display!",
+  "images": [
+    {
+      "id": 1,
+      "src": "/images/about-image.jpg",
+      "alt": "Christmas lights display - front view",
+      "thumbnail": "/images/about-image.jpg"
+    },
+    {
+      "id": 2,
+      "src": "/images/donation-amount.jpg",
+      "alt": "Colorful yard decorations",
+      "thumbnail": "/images/donation-amount.jpg"
+    },
+    {
+      "id": 3,
+      "src": "/images/thumbnail1.jpg",
+      "alt": "Rooftop light display",
+      "thumbnail": "/images/thumbnail1.jpg"
+    },
+    {
+      "id": 4,
+      "src": "/images/thumbnail2.jpg",
+      "alt": "Outdoor Christmas tree",
+      "thumbnail": "/images/thumbnail2.jpg"
+    },
+    {
+      "id": 5,
+      "src": "/images/thumbnail3.jpg",
+      "alt": "Illuminated pathway",
+      "thumbnail": "/images/thumbnail3.jpg"
+    },
+    {
+      "id": 6,
+      "src": "/images/thumbnail4.jpg",
+      "alt": "Close-up of decorations",
+      "thumbnail": "/images/thumbnail4.jpg"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Donate & Stay Connected | Highfield Road Christmas Lights 🎄",
+    "description": "Support Highfield Road Christmas Lights by donating to our GoFundMe campaign and following our updates on Facebook.",
+    "image": "/images/donation-amount.jpg"
+  },
+  "heading": "Stay Connected",
+  "donation": {
+    "title": "Support Our Cause",
+    "text": "Every donation helps make a difference. Support our charity through our official GoFundMe campaign.",
+    "url": "https://www.gofundme.com/f/vectis-corps-of-drums-marching-band?lang=en_GB",
+    "fallbackImage": "/images/donation-amount.jpg"
+  },
+  "facebook": {
+    "title": "Latest Updates",
+    "text": "Follow our Facebook page for the latest news and photos from the display.",
+    "pageUrl": "https://www.facebook.com/HighfieldRoadChristmasLights",
+    "embedId": "25615336",
+    "fallbackImage": "/images/facebook-preview.png"
+  }
+}
