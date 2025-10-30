@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: Joeeeeca/highfield-road-christmas-lights
-  branch: gh-pages
+  branch: main
   base_url: https://joeeeeca.github.io/highfield-road-christmas-lights/public/admin/oauth
   auth_endpoint: authorize.html
 
