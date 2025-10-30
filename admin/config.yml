@@ -2,19 +2,133 @@ backend:
   name: github
   repo: Joeeeeca/highfield-road-christmas-lights
   branch: gh-pages
-  base_url: https://decap-cms-oauth.vercel.app
+  base_url: https://joeeeeca.github.io/highfield-road-christmas-lights/public/admin/oauth
+  auth_endpoint: authorize.html
 
-media_folder: "dist/images/uploads"  # where images are stored in your built site
-public_folder: "/images/uploads"     # how those images are referenced in the site
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "content"
     label: "Site Content"
     files:
+      # 🕯️ About Section
       - label: "About Section"
         name: "about"
         file: "src/content/about.json"
         fields:
+          - { label: "Section Title", name: "title", widget: "string" }
+          - label: "Cards"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Icon", name: "icon", widget: "select", options: ["Star", "Gift", "Sparkles"] }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Text"
+                name: "text"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - label: "Meta Information"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+
+      # 🎄 Hero Section
+      - label: "Hero Section"
+        name: "hero"
+        file: "src/content/hero.json"
+        fields:
+          - label: "Meta Information"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
           - { label: "Heading", name: "heading", widget: "string" }
           - { label: "Text", name: "text", widget: "text" }
-          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Background Image", name: "backgroundImage", widget: "image" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+
+      # 🖼️ Gallery Section
+      - label: "Gallery Section"
+        name: "gallery"
+        file: "src/content/gallery.json"
+        fields:
+          - label: "Meta Information"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subtext", name: "subtext", widget: "string" }
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "number" }
+              - { label: "Source Image", name: "src", widget: "image" }
+              - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+
+      # 📍 Visit Section
+      - label: "Visit Section"
+        name: "visit"
+        file: "src/content/visit.json"
+        fields:
+          - label: "Meta Information"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Google Maps Embed URL", name: "googleMapsUrl", widget: "text" }
+          - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
+          - { label: "Visiting Hours Image", name: "visitingHoursImage", widget: "image" }
+          - { label: "Visiting Hours Alt Text", name: "visitingHoursAlt", widget: "string" }
+
+      # 💖 Donation & Social Section
+      - label: "Donation & Social Section"
+        name: "donation"
+        file: "src/content/donation.json"
+        fields:
+          - label: "Meta Information"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+
+          - { label: "Heading", name: "heading", widget: "string" }
+
+          - label: "Donation Info"
+            name: "donation"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "GoFundMe URL", name: "url", widget: "string" }
+              - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
+
+          - label: "Facebook Info"
+            name: "facebook"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Page URL", name: "pageUrl", widget: "string" }
+              - { label: "Embed ID", name: "embedId", widget: "string" }
+              - { label: "Fallback Image", name: "fallbackImage", widget: "image" }
