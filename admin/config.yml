@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: Joeeeeca/highfield-road-christmas-lights
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - label: "About Section"
+        name: "about"
+        file: "src/content/about.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Image", name: "image", widget: "image" }
