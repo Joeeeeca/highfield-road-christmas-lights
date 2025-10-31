@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Site Admin | Highfield Road Christmas Lights 🎄</title>
 
-    <!-- Tailwind for Admin UI -->
-    <script src="https://cdn.tailwindcss.com/4.1.16"></script>
+    <!-- ✅ Tailwind 3.4.17 (stable & supported) -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -24,26 +24,12 @@
         color: white;
         font-family: "Roboto", sans-serif;
       }
-      h1,
-      h2,
-      h3 {
-        font-family: "Poppins", sans-serif;
-      }
-      .text-glow {
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-      }
-      .bg-christmas-red {
-        background-color: #e63946;
-      }
-      .text-christmas-gold {
-        color: #f4d35e;
-      }
-      .border-christmas-gold {
-        border-color: #f4d35e;
-      }
-      .bg-christmas-gradient {
-        background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e);
-      }
+      h1, h2, h3 { font-family: "Poppins", sans-serif; }
+      .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+      .bg-christmas-red { background-color: #e63946; }
+      .text-christmas-gold { color: #f4d35e; }
+      .border-christmas-gold { border-color: #f4d35e; }
+      .bg-christmas-gradient { background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e); }
       .fade-in-up {
         opacity: 1 !important;
         transform: translateY(0) !important;
@@ -58,293 +44,107 @@
 
     <script>
       window.addEventListener("DOMContentLoaded", () => {
-        if (typeof window.CMS === "undefined") {
-          console.error("CMS failed to load 😢");
-          return;
-        }
+        const initCMS = () => {
+          if (typeof window.CMS === "undefined" || typeof window.React === "undefined") {
+            // Wait until Decap + React fully load
+            return setTimeout(initCMS, 200);
+          }
 
-        /* 🧩 Inject Tailwind + Fonts into the CMS Preview iframe */
-        CMS.registerPreviewStyle("https://cdn.tailwindcss.com/3.4.17");
-        CMS.registerPreviewStyle(
-          "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
-        );
-        CMS.registerPreviewStyle("", {
-          raw: `
-            body {
-              background: linear-gradient(to bottom, #0b1221, #101a33);
-              color: white;
-              font-family: 'Roboto', sans-serif;
-              padding: 2rem;
-            }
-            h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-            .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
-            .bg-christmas-red { background-color: #e63946; }
-            .text-christmas-gold { color: #f4d35e; }
-            .border-christmas-gold { border-color: #f4d35e; }
-            .bg-christmas-gradient {
-              background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e);
-            }
-          `,
-        });
+          const React = window.React;
+          const { createElement } = React;
 
-        /* ✅ Use Decap’s built-in React (don’t import manually) */
-        const React = window.React;
-        const { createElement } = React;
+          /* 🎨 Inject Tailwind + Fonts into CMS Preview iframe */
+          CMS.registerPreviewStyle("https://cdn.tailwindcss.com/3.4.17");
+          CMS.registerPreviewStyle(
+            "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
+          );
+          CMS.registerPreviewStyle("", {
+            raw: `
+              body {
+                background: linear-gradient(to bottom, #0b1221, #101a33);
+                color: white;
+                font-family: 'Roboto', sans-serif;
+                padding: 2rem;
+              }
+              h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+              .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+              .bg-christmas-red { background-color: #e63946; }
+              .text-christmas-gold { color: #f4d35e; }
+              .border-christmas-gold { border-color: #f4d35e; }
+              .bg-christmas-gradient {
+                background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e);
+              }
+            `,
+          });
 
-        /* =============== 🎄 Hero Section Preview =============== */
-        const HeroPreview = ({ entry }) => {
-          const data = entry.getIn(["data"]).toJS();
-          return createElement(
-            "section",
-            {
-              className:
-                "relative flex min-h-screen items-center justify-center overflow-hidden text-center",
-            },
-            createElement("div", {
-              className: "absolute inset-0 bg-cover bg-center bg-no-repeat",
-              style: { backgroundImage: `url(${data.backgroundImage})` },
-            }),
-            createElement("div", { className: "absolute inset-0 bg-black/60" }),
-            createElement(
-              "div",
-              { className: "relative z-10 max-w-3xl mx-auto p-8" },
+          /* =============== 🕯️ About Section Preview =============== */
+          const AboutPreview = ({ entry }) => {
+            const data = entry.getIn(["data"]).toJS();
+            return createElement(
+              "section",
+              { className: "relative py-16 text-center" },
               createElement(
-                "h1",
-                { className: "text-5xl font-bold mb-4 text-white text-glow" },
-                data.heading
-              ),
-              createElement(
-                "p",
-                { className: "text-xl text-gray-200 mb-6" },
-                data.text
+                "h2",
+                { className: "text-4xl font-bold mb-8 text-white text-glow" },
+                data.title
               ),
               createElement(
                 "div",
-                { className: "flex flex-wrap gap-4 justify-center" },
-                data.buttons?.map((btn) =>
-                  createElement(
-                    "a",
-                    {
-                      href: btn.link,
-                      className:
-                        "px-5 py-3 bg-christmas-red text-white rounded-lg hover:opacity-90 font-semibold shadow-lg transition-all",
-                    },
-                    btn.label
-                  )
-                )
-              )
-            )
-          );
-        };
-
-        /* =============== 🕯️ About Section Preview =============== */
-        const AboutPreview = ({ entry }) => {
-          const data = entry.getIn(["data"]).toJS();
-          return createElement(
-            "section",
-            { className: "relative py-16 text-center" },
-            createElement(
-              "h2",
-              { className: "text-4xl font-bold mb-8 text-white text-glow" },
-              data.title
-            ),
-            createElement(
-              "div",
-              { className: "max-w-4xl mx-auto space-y-8" },
-              data.cards?.map((card) =>
-                createElement(
-                  "div",
-                  {
-                    className:
-                      "p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-md text-left",
-                  },
+                { className: "max-w-4xl mx-auto space-y-8" },
+                data.cards?.map((card) =>
                   createElement(
                     "div",
-                    { className: "flex gap-4 items-start" },
-                    createElement("i", {
-                      "data-lucide": card.icon,
-                      class: "text-christmas-gold w-6 h-6 mt-1",
-                    }),
+                    {
+                      className:
+                        "p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-md text-left",
+                    },
                     createElement(
                       "div",
-                      {},
+                      { className: "flex gap-4 items-start" },
+                      createElement("i", {
+                        "data-lucide": card.icon,
+                        class: "text-christmas-gold w-6 h-6 mt-1",
+                      }),
                       createElement(
-                        "h3",
-                        { className: "text-2xl font-semibold mb-2 text-white" },
-                        card.heading
-                      ),
-                      card.text?.map((p) =>
+                        "div",
+                        {},
                         createElement(
-                          "p",
-                          { className: "text-gray-300 mb-2" },
-                          p
+                          "h3",
+                          { className: "text-2xl font-semibold mb-2 text-white" },
+                          card.heading
+                        ),
+                        card.text?.map((p) =>
+                          createElement(
+                            "p",
+                            { className: "text-gray-300 mb-2" },
+                            p
+                          )
                         )
                       )
                     )
                   )
                 )
               )
-            )
-          );
+            );
+          };
+
+          /* Register Preview Templates */
+          CMS.registerPreviewTemplate("about", AboutPreview);
+
+          /* Initialize Lucide icons */
+          CMS.registerEventListener({
+            name: "preSave",
+            handler: () => {
+              setTimeout(() => {
+                if (window.lucide) window.lucide.createIcons();
+              }, 300);
+            },
+          });
+
+          console.log("🎄 Decap CMS initialized successfully with Tailwind 3.4.17 + React ready");
         };
 
-        /* =============== 🖼️ Gallery Section Preview =============== */
-        const GalleryPreview = ({ entry }) => {
-          const data = entry.getIn(["data"]).toJS();
-          return createElement(
-            "section",
-            { className: "py-16 px-4 text-center" },
-            createElement(
-              "h2",
-              { className: "text-4xl font-bold mb-8 text-white text-glow" },
-              data.heading
-            ),
-            createElement(
-              "p",
-              { className: "text-gray-300 mb-10" },
-              data.subtext
-            ),
-            createElement(
-              "div",
-              {
-                className:
-                  "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto",
-              },
-              data.images?.map((img) =>
-                createElement(
-                  "div",
-                  {
-                    className:
-                      "overflow-hidden rounded-lg border-2 border-red-500/30 hover:border-green-500/50 transition-all duration-300 bg-slate-800/50",
-                  },
-                  createElement("img", {
-                    src: img.thumbnail,
-                    alt: img.alt,
-                    className: "w-full h-64 object-cover",
-                  })
-                )
-              )
-            )
-          );
-        };
-
-        /* =============== 📍 Visit Section Preview =============== */
-        const VisitPreview = ({ entry }) => {
-          const data = entry.getIn(["data"]).toJS();
-          return createElement(
-            "section",
-            { className: "py-16 px-4 text-center" },
-            createElement(
-              "h2",
-              { className: "text-4xl font-bold mb-8 text-white text-glow" },
-              data.heading
-            ),
-            createElement(
-              "div",
-              {
-                className:
-                  "grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto",
-              },
-              createElement("img", {
-                src: data.visitingHoursImage,
-                alt: data.visitingHoursAlt,
-                className:
-                  "rounded-lg shadow-lg border border-christmas-gold/30 mx-auto",
-              }),
-              createElement("iframe", {
-                src: data.googleMapsUrl,
-                className:
-                  "w-full h-[400px] rounded-lg border border-christmas-gold/30 shadow-lg",
-                allowFullScreen: true,
-              })
-            )
-          );
-        };
-
-        /* =============== 💖 Donation & Social Preview =============== */
-        const DonationPreview = ({ entry }) => {
-          const data = entry.getIn(["data"]).toJS();
-          return createElement(
-            "section",
-            { className: "py-16 px-4 text-center" },
-            createElement(
-              "h2",
-              { className: "text-4xl font-bold mb-8 text-white text-glow" },
-              data.heading
-            ),
-            createElement(
-              "div",
-              {
-                className: "grid md:grid-cols-2 gap-8 max-w-6xl mx-auto",
-              },
-              // Left - Donation
-              createElement(
-                "div",
-                {
-                  className:
-                    "p-6 bg-white/10 backdrop-blur-md rounded-xl border border-red-500/30 shadow-lg",
-                },
-                createElement(
-                  "h3",
-                  { className: "text-2xl font-semibold mb-3 text-white" },
-                  data.donation.title
-                ),
-                createElement(
-                  "p",
-                  { className: "text-gray-300 mb-4" },
-                  data.donation.text
-                ),
-                createElement("img", {
-                  src: data.donation.fallbackImage,
-                  alt: "Donation preview",
-                  className: "rounded-lg w-full h-64 object-cover",
-                })
-              ),
-              // Right - Facebook
-              createElement(
-                "div",
-                {
-                  className:
-                    "p-6 bg-white/10 backdrop-blur-md rounded-xl border border-blue-500/30 shadow-lg",
-                },
-                createElement(
-                  "h3",
-                  { className: "text-2xl font-semibold mb-3 text-white" },
-                  data.facebook.title
-                ),
-                createElement(
-                  "p",
-                  { className: "text-gray-300 mb-4" },
-                  data.facebook.text
-                ),
-                createElement("img", {
-                  src: data.facebook.fallbackImage,
-                  alt: "Facebook preview",
-                  className: "rounded-lg w-full h-64 object-cover",
-                })
-              )
-            )
-          );
-        };
-
-        /* Register Previews */
-        CMS.registerPreviewTemplate("hero", HeroPreview);
-        CMS.registerPreviewTemplate("about", AboutPreview);
-        CMS.registerPreviewTemplate("gallery", GalleryPreview);
-        CMS.registerPreviewTemplate("visit", VisitPreview);
-        CMS.registerPreviewTemplate("donation", DonationPreview);
-
-        /* Initialize Lucide icons after render */
-        CMS.registerEventListener({
-          name: "preSave",
-          handler: () => {
-            setTimeout(() => {
-              if (window.lucide) window.lucide.createIcons();
-            }, 300);
-          },
-        });
-
-        console.log("🎄 Decap CMS initialized with live previews!");
+        initCMS();
       });
     </script>
   </body>
