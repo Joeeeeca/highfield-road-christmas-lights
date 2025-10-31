@@ -52,6 +52,28 @@
           return;
         }
 
+        /* 🧩 Inject Tailwind + Fonts into the CMS Preview iframe */
+        CMS.registerPreviewStyle("https://cdn.tailwindcss.com/4.1.16");
+        CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap");
+        CMS.registerPreviewStyle("", {
+          raw: `
+            body {
+              background: linear-gradient(to bottom, #0b1221, #101a33);
+              color: white;
+              font-family: 'Roboto', sans-serif;
+              padding: 2rem;
+            }
+            h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+            .text-glow { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+            .bg-christmas-red { background-color: #e63946; }
+            .text-christmas-gold { color: #f4d35e; }
+            .border-christmas-gold { border-color: #f4d35e; }
+            .bg-christmas-gradient {
+              background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e);
+            }
+          `
+        });
+
         const { createElement, useState, useEffect } = window.React;
 
         /* =============== 🎄 Hero Section Preview =============== */
