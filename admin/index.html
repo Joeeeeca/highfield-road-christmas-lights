@@ -6,7 +6,10 @@
     <title>Site Admin | Highfield Road Christmas Lights 🎄</title>
 
     <!-- ✅ Tailwind 3.4.17 (stable & supported) -->
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+ <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css"
+/>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -54,7 +57,7 @@
           const { createElement } = React;
 
           /* 🎨 Inject Tailwind + Fonts into CMS Preview iframe */
-          CMS.registerPreviewStyle("https://cdn.tailwindcss.com/3.4.17");
+          CMS.registerPreviewStyle("https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css");
           CMS.registerPreviewStyle(
             "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
           );
