@@ -6,10 +6,10 @@
     <title>Site Admin | Highfield Road Christmas Lights 🎄</title>
 
     <!-- ✅ Tailwind 3.4.17 (stable & supported) -->
- <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css"
-/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css"
+    />
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -49,18 +49,18 @@
       window.addEventListener("DOMContentLoaded", () => {
         const initCMS = () => {
           if (typeof window.CMS === "undefined" || typeof window.React === "undefined") {
-            // Wait until Decap + React fully load
             return setTimeout(initCMS, 200);
           }
 
-          const React = window.React;
-          const { createElement } = React;
+          const { createElement } = window.React;
 
-          /* 🎨 Inject Tailwind + Fonts into CMS Preview iframe */
-          CMS.registerPreviewStyle("https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css");
-          CMS.registerPreviewStyle(
+          // ✅ Register preview styles AFTER CMS & React are loaded
+          const styleUrls = [
+            "https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.17/tailwind.min.css",
             "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
-          );
+          ];
+
+          styleUrls.forEach(url => CMS.registerPreviewStyle(url));
           CMS.registerPreviewStyle("", {
             raw: `
               body {
@@ -76,6 +76,11 @@
               .border-christmas-gold { border-color: #f4d35e; }
               .bg-christmas-gradient {
                 background: linear-gradient(to right, #e63946, #2a9d8f, #f4d35e);
+              }
+              .fade-in-up {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                transition: all 0.7s ease;
               }
             `,
           });
@@ -134,7 +139,7 @@
           /* Register Preview Templates */
           CMS.registerPreviewTemplate("about", AboutPreview);
 
-          /* Initialize Lucide icons */
+          /* Initialize Lucide icons inside preview iframe */
           CMS.registerEventListener({
             name: "preSave",
             handler: () => {
@@ -144,7 +149,7 @@
             },
           });
 
-          console.log("🎄 Decap CMS initialized successfully with Tailwind 3.4.17 + React ready");
+          console.log("🎄 Decap CMS initialized successfully with Tailwind styles applied");
         };
 
         initCMS();
