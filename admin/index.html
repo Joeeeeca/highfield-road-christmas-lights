@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Site Admin | Highfield Road Christmas Lights 🎄</title>
 
-    <!-- Tailwind v4 (local) - safe for admin layout -->
+    <!-- Tailwind for Admin UI -->
     <script src="https://cdn.tailwindcss.com/4.1.16"></script>
-
-    <!-- React for CMS Previews -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -91,7 +87,9 @@
           `,
         });
 
-        const { createElement, useState, useEffect } = window.React;
+        /* ✅ Use Decap’s built-in React (don’t import manually) */
+        const React = window.React;
+        const { createElement } = React;
 
         /* =============== 🎄 Hero Section Preview =============== */
         const HeroPreview = ({ entry }) => {
@@ -172,10 +170,7 @@
                       {},
                       createElement(
                         "h3",
-                        {
-                          className:
-                            "text-2xl font-semibold mb-2 text-white",
-                        },
+                        { className: "text-2xl font-semibold mb-2 text-white" },
                         card.heading
                       ),
                       card.text?.map((p) =>
@@ -280,8 +275,7 @@
             createElement(
               "div",
               {
-                className:
-                  "grid md:grid-cols-2 gap-8 max-w-6xl mx-auto",
+                className: "grid md:grid-cols-2 gap-8 max-w-6xl mx-auto",
               },
               // Left - Donation
               createElement(
@@ -341,7 +335,6 @@
         CMS.registerPreviewTemplate("donation", DonationPreview);
 
         /* Initialize Lucide icons after render */
-        CMS.registerPreviewStyle("", { raw: "" });
         CMS.registerEventListener({
           name: "preSave",
           handler: () => {
